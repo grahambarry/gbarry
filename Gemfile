@@ -6,13 +6,14 @@ gem 'rails'
 
 gem 'sqlite3'
 
-gem 'sass-rails'
+
 
 gem 'uglifier'
 
 gem 'coffee-rails'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
+gem 'sass-rails'
 gem 'node'
 gem 'haml'
 gem 'simple_form'
