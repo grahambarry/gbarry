@@ -23,6 +23,7 @@ gem 'turbolinks'
 gem 'jbuilder'
 gem 'paperclip', '~> 4.2.1'
 gem 'masonry-rails', '~> 0.2.4'
+gem 'acts_as_votable', '~> 0.10.0'
 gem 'sdoc',          group: :doc
 
 
