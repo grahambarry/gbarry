@@ -21,6 +21,8 @@ gem 'devise', '~> 3.4.1'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
+gem 'paperclip', '~> 4.2.1'
+gem 'masonry-rails', '~> 0.2.4'
 gem 'sdoc',          group: :doc
 
 
