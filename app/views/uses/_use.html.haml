@@ -1,0 +1,4 @@
+= gravatar_for use, size: 50
+= link_to use.name, use
+- if current_use.admin? && !current_use?(use)
+  | #{link_to "delete", use, method: :delete, data: { confirm: "You sure?" }}	

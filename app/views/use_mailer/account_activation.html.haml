@@ -1,0 +1,6 @@
+%h1 ArtRising.ie
+%p
+  Hi #{@use.name},
+%p
+  Welcome to Art Rising! Click on the link below to activate your account:
+= link_to "Activate", edit_account_activation_url(@use.activation_token, email: @use.email)

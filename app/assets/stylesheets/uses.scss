@@ -1,0 +1,33 @@
+// Place all the styles related to the Uses controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/* Uses index */
+
+.uses {
+width:200px;
+  list-style: none;
+  margin: 0 0 0 0;
+
+}
+
+.box1 {
+
+background-color: #b0c4de;
+overflow:hidden;
+	width: 200px;
+	height:100px;
+	list-style: none;
+	margin: 2px 4px 4px 2px;
+	  	li {
+
+
+  	list-style: none;
+	overflow: auto;
+    padding: 10px 10px 10px 10px;
+    display: block;
+    
+
+
+}
+
+}

@@ -1,9 +1,7 @@
 = simple_form_for @pin, html: { multipart: true } do |f|
 	- if @pin.errors.any?
 		#errors
-			%h2
-				= pluralize(@pin.errors.count, "error")
-				prevented this Pin from saving
+	
 			%ul
 				- @pin.errors.full_messages.each do |msg|
 					%li= msg

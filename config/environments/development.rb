@@ -37,4 +37,9 @@ Rails.application.configure do
   # For devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   Paperclip.options[:command_path] = 'C:\Program Files (x86)\GnuWin32\bin'
+
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :test
+  host = 'localhost:3000'
+  config.action_mailer.default_url_options = { host: host }
 end

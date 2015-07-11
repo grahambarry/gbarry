@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526143433) do
+ActiveRecord::Schema.define(version: 20150710105738) do
+
+  create_table "pin_colors", force: :cascade do |t|
+    t.integer  "pin_id"
+    t.string   "original_color"
+    t.string   "reference_color"
+    t.float    "frequency"
+    t.float    "distance"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pin_colors", ["distance"], name: "index_pin_colors_on_distance"
+  add_index "pin_colors", ["frequency"], name: "index_pin_colors_on_frequency"
+  add_index "pin_colors", ["original_color"], name: "index_pin_colors_on_original_color"
+  add_index "pin_colors", ["pin_id"], name: "index_pin_colors_on_pin_id"
+  add_index "pin_colors", ["reference_color"], name: "index_pin_colors_on_reference_color"
 
   create_table "pins", force: :cascade do |t|
     t.string   "title",              limit: 255
@@ -40,10 +56,26 @@ ActiveRecord::Schema.define(version: 20150526143433) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "uses", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "password_digest"
+    t.string   "remember_digest"
+    t.boolean  "admin"
+    t.string   "activation_digest"
+    t.boolean  "activated",         default: false
+    t.datetime "activated_at"
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
+  end
 
   create_table "votes", force: :cascade do |t|
     t.integer  "votable_id"

@@ -1,23 +1,36 @@
 class PinsController < ApplicationController
-	before_action :find_pin, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
-	before_action :authenticate_user!, except: [:index, :show]
 
-	def index
-		@pins = Pin.all.order("created_at DESC")
-	end
+  
+  def index
+    @pins = Pin.paginate(page: params[:page], per_page: 6).order("created_at DESC")
+
+	@pins = Pin.all
+
+	
+  if params[:search]
+    @pins = Pin.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 6)
+	
+  else
+    @pins = Pin.paginate(page: params[:page], per_page: 6).order("created_at DESC")
+
+  end
+end
+
+
+  
 
 	def show
 	end
 
 	def new
-		@pin = current_user.pins.build
+		@pin = current_use.pins.build
 	end
 
 	def create
 		@pin = current_user.pins.build(pin_params)
 
 		if @pin.save
-			redirect_to @pin, notice: "Pin was successfully created"
+			redirect_to @pin, notice: "Art successfully created"
 		else
 			render 'new'
 		end
@@ -28,7 +41,7 @@ class PinsController < ApplicationController
 
 	def update
 		if @pin.update(pin_params)
-			redirect_to @pin, notice: "Pin was successfully updated"
+			redirect_to @pin, notice: "Successfully updated"
 		else
 			render 'edit'
 		end
@@ -49,9 +62,9 @@ class PinsController < ApplicationController
 	def pin_params
 		params.require(:pin).permit(:title, :description, :image)
 	end
+	
 
 	def find_pin
 		@pin = Pin.find(params[:id])
 	end
-
 end
