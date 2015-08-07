@@ -121,6 +121,7 @@ GEM
       mime-types
     paperclip-meta (1.2.0)
       paperclip (>= 3.0.2, < 5.0)
+    pg (0.18.2-x86-mingw32)
     rack (1.6.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -216,6 +217,7 @@ DEPENDENCIES
   node
   paperclip (~> 4.2.1)
   paperclip-meta (~> 1.2.0)
+  pg (~> 0.18.2)
   rails
   rails_12factor
   rmagick (~> 2.15.0)

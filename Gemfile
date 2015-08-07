@@ -32,6 +32,6 @@ gem 'rmagick', '~> 2.15.0'
 gem 'kaleidoscope',        :git => "https://github.com/JoshSmith/kaleidoscope"
 gem 'sdoc',          group: :doc
 gem 'rails_12factor', group: :production
-
+gem 'pg', '~> 0.18.2', group: :production
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
