@@ -20,6 +20,7 @@ end
 
   def show
     @use = Use.find(params[:id])
+    @microposts = @use.microposts.paginate(page: params[:page])
   end
 
   def new
@@ -65,13 +66,7 @@ end
       params.require(:use).permit(:name, :email, :password,
                                    :password_confirmation)
     end
-    def logged_in_use
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
+
     # Confirms the correct user.
     def correct_use
       @use = Use.find(params[:id])

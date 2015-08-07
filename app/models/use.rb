@@ -10,7 +10,10 @@ class Use < ActiveRecord::Base
 has_secure_password
 validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
 
-has_many :pins
+has_many :pins, dependent: :destroy
+has_many :microposts, dependent: :destroy
+
+
 def self.search(search)
 query = "%#{search}%"
   if search

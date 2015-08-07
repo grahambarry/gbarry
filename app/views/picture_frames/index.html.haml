@@ -1,0 +1,16 @@
+#pins.transitions-enabled
+  - @picture_frames.where(aspect_frame: '1').each do |picture_frame|   
+    .box.panel.panel-default
+      = link_to (image_tag picture_frame.image.url (:medium)), picture_frame
+      %h2= link_to picture_frame.name, picture_frame
+      %p.use
+        Submitted by
+
+
+.col-md-4.col-md-offset-4.center
+  .form-inline
+  .form-group
+    = form_tag(picture_frames_path, :method => "get", id: "search-form") do
+      = text_field_tag :search, params[:search], placeholder: "Search Picture_Frame", class: 'form-control'
+      = submit_tag "Search", name: nil, class: 'btn btn-primary inline-button'
+      %end

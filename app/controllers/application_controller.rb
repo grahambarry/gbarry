@@ -6,8 +6,14 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_devise_parameters, if: :devise_controller?
 
-protected
-def configure_devise_parameters
-  devise_parameter_sanitizer.for(:account_update) << :name
+
+    private
+    def logged_in_use
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+    end
 end
-end
+

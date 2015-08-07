@@ -119,6 +119,8 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    paperclip-meta (1.2.0)
+      paperclip (>= 3.0.2, < 5.0)
     rack (1.6.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -213,6 +215,7 @@ DEPENDENCIES
   masonry-rails (~> 0.2.4)
   node
   paperclip (~> 4.2.1)
+  paperclip-meta (~> 1.2.0)
   rails
   rails_12factor
   rmagick (~> 2.15.0)

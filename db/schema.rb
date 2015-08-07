@@ -11,7 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710105738) do
+ActiveRecord::Schema.define(version: 20150806132720) do
+
+  create_table "microposts", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "use_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "microposts", ["use_id", "created_at"], name: "index_microposts_on_use_id_and_created_at"
+  add_index "microposts", ["use_id"], name: "index_microposts_on_use_id"
+
+  create_table "picture_frames", force: :cascade do |t|
+    t.string   "name"
+    t.string   "image_url"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.text     "image_meta"
+    t.string   "aspect_frame"
+    t.integer  "top"
+    t.integer  "left"
+  end
 
   create_table "pin_colors", force: :cascade do |t|
     t.integer  "pin_id"
@@ -39,8 +64,12 @@ ActiveRecord::Schema.define(version: 20150710105738) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "use_id"
+    t.integer  "aspect"
+    t.text     "image_meta"
   end
 
+  add_index "pins", ["use_id"], name: "index_pins_on_use_id"
   add_index "pins", ["user_id"], name: "index_pins_on_user_id"
 
   create_table "users", force: :cascade do |t|

@@ -1,0 +1,18 @@
+#pin_show.row
+	.col-md-8.col-md-offset-2
+		.panel.panel-default
+			.mymarginframe
+				= image_tag @picture_frame.image.url (:original)
+			.panel-body
+				%h1= @picture_frame.name
+
+			.panel-footer
+				.row
+					.col-md-6
+						%p.user
+							Submitted by
+
+					.col-md-6
+						.btn-group.pull-right
+							= link_to "Edit", edit_picture_frame_path, class: "btn btn-default"
+							= link_to "Delete", picture_frame_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
