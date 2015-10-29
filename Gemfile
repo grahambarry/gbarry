@@ -4,8 +4,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 4.2.3'
 gem 'bcrypt', '~> 3.1.10'
-
-gem 'sqlite3'
 gem "figaro"
 gem 'aws-sdk-v1'
 gem 'slim', '~> 3.0.6'
@@ -35,7 +33,7 @@ gem 'kaleidoscope',        :git => "https://github.com/JoshSmith/kaleidoscope"
 
 gem 'sdoc',          group: :doc
 group :development, :test do
-gem 'sqlite3'
+gem 'pg'
 end
 group :production do
 gem 'pg'
