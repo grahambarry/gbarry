@@ -214,7 +214,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_votable (~> 0.10.0)
   autoprefixer-rails
-  aws-sdk
+  aws-sdk (~> 2.1, >= 2.1.30)
   bcrypt (~> 3.1.10)
   bootstrap-sass
   bootstrap-will_paginate (~> 0.0.10)
