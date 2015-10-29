@@ -59,7 +59,7 @@ end
   end
    # Activates an account.
   def activate
-    update_attribute(:activated,    true)
+    update_attribute(:activated, true)
     update_attribute(:activated_at, Time.zone.now)
   end
 
@@ -71,7 +71,7 @@ end
     # Sets the password reset attributes.
   def create_reset_digest
     self.reset_token = Use.new_token
-    update_attribute(:reset_digest,  Use.digest(reset_token))
+    update_attribute(:reset_digest, Use.digest(reset_token))
     update_attribute(:reset_sent_at, Time.zone.now)
   end
 

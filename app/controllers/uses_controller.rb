@@ -69,8 +69,7 @@ end
   private
 
     def use_params
-      params.require(:use).permit(:name, :email, :password,
-                                   :password_confirmation)
+      params.require(:use).permit(:name, :email, :password, :password_confirmation)
     end
 
     # Confirms the correct user.
