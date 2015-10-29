@@ -7,25 +7,25 @@
 
 .style_image1{
     position: absolute;
-
-
-
+    object-fit: cover;
+    overflow: hidden;
 }
 
 
 .style_image_frame1{
 
+position: relative;  
+width:100%;
 
-
-    position: relative;  
 
  }
 
 .style_image2{
+
+
     position: absolute;
-
-
-
+	object-fit: cover;
+    overflow: hidden;
 
 }
 
@@ -35,8 +35,32 @@ width:100%;
 
 }
 
+
+
+.style_image3{
+    position: absolute;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+
+.style_image_frame3{
+
+position: relative;  
+width:100%;
+
+
+ }
+ 
+.cover{
+
+
+overflow:hidden;
+}
+
 .index_frame_container{
-    
-    background-color: #000;
-    width:100%;
+position: relative;
+width:100%;
+height:100%;
+
 }

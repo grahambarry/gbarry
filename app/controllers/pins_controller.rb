@@ -1,25 +1,41 @@
 class PinsController < ApplicationController
 		before_action :find_pin, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
-    before_action :correct_use_pin,   only: [:edit, :update]
+
 
 
   
   def index
     @pins = Pin.paginate(page: params[:page], per_page: 6).order("created_at DESC")
+	    respond_to do |format|
+	    format.html
+	    format.js # add this line for your js template
 
-	@pins = Pin.all
-
-
-	
   if params[:search]
-    @pins = Pin.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 6)
-	
-  else
-    @pins = Pin.paginate(page: params[:page], per_page: 6).order("created_at DESC")
-    @micropost = current_use.microposts.build if logged_in?
+    @pins = Pin.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 9)
 
+  else
+    @pins = Pin.paginate(page: params[:page], per_page: 9).order("created_at DESC")
+    @microposts = current_use.microposts.build if logged_in?
   end
 end
+end
+
+
+
+
+
+
+
+  def home
+    @pins = Pin.where(:use_id => current_use.id).paginate(:page => params[:page])
+    if signed_in?
+      @micropost  = current_use.microposts.build
+      @feed_items = current_use.feed.paginate(page: params[:page])
+  end
+end
+
+
+
 
 
 
@@ -27,12 +43,18 @@ end
   
 
 	def show
-
+		@pins = Pin.all
+@picture_frames = PictureFrame.all
+    @microposts = current_use.microposts.build if logged_in?
 	end
 
 	def new
 		@pin = current_use.pins.build
+
 	end
+
+
+
 
 	def create
 		@pin = current_use.pins.build(pin_params)
@@ -46,6 +68,7 @@ end
 	
 
 	def edit
+
 	end
 
 	def update
@@ -72,29 +95,17 @@ end
 		
 	end
 
-	private
+private
 
-	    def logged_in_use
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
-    # Confirms the correct user.
-    def correct_use_pin
-      @use = Use.find(params[:id])
-      redirect_to(root_url) unless current_use?(@pin.use)
-    end
-
-
-	def pin_params
+def pin_params
 		params.require(:pin).permit(:title, :description, :image, :aspect, :image_meta)
-		
-	end
+end
 	
 
 	def find_pin
 		@pin = Pin.find(params[:id])
-	end
 end
+
+end
+
+

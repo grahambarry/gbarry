@@ -2,6 +2,10 @@ class UsesController < ApplicationController
   before_action :logged_in_use, only: [:index, :edit, :update]
     before_action :correct_use,   only: [:edit, :update]
     before_action :admin_use,     only: :destroy
+    
+def to_key
+new_record? ? nil : [ self.send(self.class.primary_key) ]
+end   
 
   def index
     @uses = Use.paginate(page: params[:page], per_page: 25).order("created_at DESC")
@@ -20,7 +24,9 @@ end
 
   def show
     @use = Use.find(params[:id])
+     @microposts = current_use.microposts.build if logged_in?
     @microposts = @use.microposts.paginate(page: params[:page])
+    
   end
 
   def new

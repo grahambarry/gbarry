@@ -2,19 +2,21 @@ source 'https://rubygems.org'
 
 
 
-gem 'rails'
+gem 'rails', '~> 4.2.3'
 gem 'bcrypt', '~> 3.1.10'
 
 gem 'sqlite3'
-
-
+gem "figaro"
+gem 'aws-sdk-v1'
+gem 'slim', '~> 3.0.6'
+gem 'spring', '~> 1.3.6'
 gem 'faker', '~> 1.4.3'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'autoprefixer-rails'
 gem 'sass-rails'
 gem 'bootstrap-sass'
-gem 'node'
+gem 'node', '~> 0.0.2'
 gem 'haml'
 gem 'simple_form'
 gem 'simple_search', '~> 0.1.1'
@@ -30,8 +32,15 @@ gem 'will_paginate', '~> 3.0.7'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'rmagick', '~> 2.15.0'
 gem 'kaleidoscope',        :git => "https://github.com/JoshSmith/kaleidoscope"
+
 gem 'sdoc',          group: :doc
-gem 'rails_12factor', group: :production
-gem 'pg', '~> 0.18.2', group: :production
+group :development, :test do
+gem 'sqlite3'
+end
+group :production do
+gem 'pg'
+gem 'rails_12factor'
+end
+
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin]

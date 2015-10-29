@@ -2,7 +2,10 @@
 	.col-md-8.col-md-offset-2
 		.panel.panel-default
 			.panel-heading.pin_image
-				= image_tag @pin.image.url(:large), :class => "style_image" 
+
+				.index_frame_container
+					= image_tag @pin.image.url(:large), :class => "style_image" + @pin.aspect.to_s, :style => "top: #{@picture_frames = PictureFrame.where(aspect_frame: @pin.aspect.to_s).limit(1).take!.top}" + '%; ' "left: #{@picture_frames = PictureFrame.where(aspect_frame: @pin.aspect.to_s).limit(1).take!.left}" + '%;' "width: #{101 - @picture_frames = PictureFrame.where(aspect_frame: @pin.aspect.to_s).limit(1).take!.left * 2}" + '%;' "height: #{101 - @picture_frames = PictureFrame.where(aspect_frame: @pin.aspect.to_s).limit(1).take!.top * 2}" + '%;'
+					= image_tag @picture_frames = PictureFrame.where(aspect_frame: @pin.aspect.to_s).limit(1).take!.image.url(:original), :class => "style_image_frame" + @pin.aspect.to_s, id: 'frame-flipper'
 
 			.panel-body
 				%h1= @pin.title
@@ -21,3 +24,51 @@
 							- if current_use?(@pin.use)
 								= link_to "Edit", edit_pin_path, class: "btn btn-default"
 								= link_to "Delete", pin_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
+
+
+.panel-heading
+	#pictureframes.transitions-enabled
+		- @picture_frames = PictureFrame.all.where(aspect_frame: @pin.aspect.to_s).each do |picture_frame|
+			.box.panel.panel-default.mymargin
+				.index_frame_container
+					= image_tag @pin.image.url(:large), :class => "style_image" + @pin.aspect.to_s, :style => "top: #{@picture_frames = PictureFrame.where(aspect_frame: @pin.aspect.to_s).limit(1).take!.top}" + '%; ' "left: #{@picture_frames = PictureFrame.where(aspect_frame: @pin.aspect.to_s).limit(1).take!.left}" + '%;' "width: #{101 - @picture_frames = PictureFrame.where(aspect_frame: @pin.aspect.to_s).limit(1).take!.left * 2}" + '%;' "height: #{101 - @picture_frames = PictureFrame.where(aspect_frame: @pin.aspect.to_s).limit(1).take!.top * 2}" + '%;'
+					= image_tag picture_frame.image.url
+
+
+- if logged_in?
+	.row
+	%aside.col-md-4
+		%section.user_info
+			= render 'shared/use_info'
+		%section.micropost_form
+			= render 'shared/micropost_form'
+
+
+
+- else
+	.center.jumbotron
+	%h1 Welcome to ArtRising.ie
+	%h2
+	This is the home page for the
+	%a{:href => "http://www.railstutorial.org/"} Ruby on Rails Tutorial
+	sample application.
+	= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary"  
+%end 
+.panel-heading                |
+	.row
+		.col-md-6
+			%p.user
+			Submitted by
+			= @pin.use.name
+.panel-heading                |
+	.row
+		.col-md-6
+			%p.user
+			Submitted by
+			= @pin.use.name
+.panel-heading                |
+	.row
+		.col-md-6
+			%p.user
+			Submitted by
+			= @pin.use.name

@@ -3,8 +3,11 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
     include SessionsHelper
+     Paperclip.options[:command_path] = "/usr/local/bin/identify"
 
-  before_filter :configure_devise_parameters, if: :devise_controller?
+    
+
+
 
 
     private

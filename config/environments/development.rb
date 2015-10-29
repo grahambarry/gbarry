@@ -42,4 +42,17 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :test
   host = 'localhost:3000'
   config.action_mailer.default_url_options = { host: host }
+
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['artrising1'],
+      :access_key_id => ENV['AKIAITAEMLL6K7U754IQ'],
+      :secret_access_key => ENV['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']
+    },
+    :url => ':s3_domain_url',
+    :path => "/:class/:attachment/:id_partition/:style/:filename"
+  }
+
 end

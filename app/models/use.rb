@@ -13,6 +13,11 @@ validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
 has_many :pins, dependent: :destroy
 has_many :microposts, dependent: :destroy
 
+  def feed
+    # This is preliminary. See "Following users" for the full implementation.
+    Micropost.where("user_id = ?", id)
+  end
+
 
 def self.search(search)
 query = "%#{search}%"

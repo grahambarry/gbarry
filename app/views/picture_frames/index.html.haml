@@ -1,5 +1,5 @@
 #pins.transitions-enabled
-  - @picture_frames.where(aspect_frame: '1').each do |picture_frame|   
+  - @picture_frames.each do |picture_frame|   
     .box.panel.panel-default
       = link_to (image_tag picture_frame.image.url (:medium)), picture_frame
       %h2= link_to picture_frame.name, picture_frame

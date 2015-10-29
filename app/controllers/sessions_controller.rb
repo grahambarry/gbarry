@@ -2,6 +2,9 @@ class SessionsController < ApplicationController
 
   def new
   end
+def to_key
+  new_record? ? nil : [ self.send(self.class.primary_key) ]
+end
 
   def create
     use = Use.find_by(email: params[:session][:email].downcase)

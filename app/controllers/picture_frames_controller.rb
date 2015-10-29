@@ -10,6 +10,7 @@ class PictureFramesController < ApplicationController
   # GET /picture_frames/1
   # GET /picture_frames/1.json
   def show
+      @picture_frames = PictureFrame.all
   end
 
     def portrait
@@ -73,6 +74,6 @@ class PictureFramesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def picture_frame_params
-      params.require(:picture_frame).permit(:name, :image_url, :image, :id, :aspect_frame, :image_meta)
+      params.require(:picture_frame).permit(:name, :image_url, :image, :id, :aspect_frame, :image_meta, :top, :left)
     end
 end

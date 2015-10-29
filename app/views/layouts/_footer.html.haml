@@ -1,0 +1,5 @@
+.col-md-4.col-md-offset-4.center
+	.form-group
+		= form_tag(pins_path, :method => "get", id: "search-form" class: 'form-inline') do
+			= search_field_tag :search, params[:search], placeholder: "Search For Art", class: 'form-control'
+			= submit_tag "Search", name: nil, class: 'btn btn-primary inline-button'

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
  resources :pins
 
 
+
   resources :pins do
   	resources :pins
   	member do
@@ -30,10 +31,12 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   resources :uses
-   resources :pins
+
+  resources :pins
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-    resources :microposts,          only: [:create, :destroy]
+  resources :microposts,          only: [:create, :destroy]
+
 
 end
 
