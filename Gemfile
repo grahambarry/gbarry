@@ -5,7 +5,7 @@ ruby '2.1.5'
 gem 'rails', '~> 4.2.3'
 gem 'bcrypt', '~> 3.1.10'
 gem "figaro"
-gem 'aws-sdk', '~> 2.1', '>= 2.1.30'
+gem 'aws-sdk-v1'
 gem 'slim', '~> 3.0.6'
 gem 'spring', '~> 1.3.6'
 gem 'faker', '~> 1.4.3'
